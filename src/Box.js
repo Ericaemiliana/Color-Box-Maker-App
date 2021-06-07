@@ -1,16 +1,24 @@
 import React from "react";
 
-const Box = ({ id, width, height, backgroundColor }) => {
+const Box = ({
+  id,
+  width = 4,
+  height = 4,
+  backgroundColor = "yellow",
+  handleRemove,
+}) => {
+  const remove = () => handleRemove(id);
+
   return (
     <div>
       <div
         style={{
           width: `${width}em`,
           height: `${height}em`,
-          backgroundColor: { backgroundColor },
+          backgroundColor,
         }}
       />
-      <button>X</button>
+      <button onClick={remove}>X</button>
     </div>
   );
 };
