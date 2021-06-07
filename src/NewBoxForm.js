@@ -2,6 +2,20 @@ import React, { useState } from "react";
 import uuid from "uuid/v4";
 import { makeStyles } from "@material-ui/core/styles";
 import Button from "@material-ui/core/Button";
+import TextField from "@material-ui/core/TextField";
+import Box from "@material-ui/core/Box";
+
+const useStyles = makeStyles((theme) => ({
+  root: {
+    display: "flex",
+    flexWrap: "wrap",
+  },
+  textField: {
+    marginLeft: theme.spacing(5),
+    marginRight: theme.spacing(5),
+    width: "25ch",
+  },
+}));
 
 const NewBoxForm = ({ createBox }) => {
   const INITIAL_STATE = {
@@ -9,6 +23,8 @@ const NewBoxForm = ({ createBox }) => {
     height: "",
     backgroundColor: "",
   };
+
+  const classes = useStyles();
 
   const [formData, setFormData] = useState(INITIAL_STATE);
 
@@ -31,11 +47,11 @@ const NewBoxForm = ({ createBox }) => {
   };
 
   return (
-    <div>
+    <Box justifyContent="center">
       <form onSubmit={handleSubmit}>
         <div>
-          <label htmlFor="width"> Width</label>
-          <input
+          <label htmlFor="width"> Width: </label>
+          <TextField
             id="width"
             type="text"
             name="width"
@@ -45,8 +61,8 @@ const NewBoxForm = ({ createBox }) => {
           />
         </div>
         <div>
-          <label htmlFor="height"> Height</label>
-          <input
+          <label htmlFor="height">Height: </label>
+          <TextField
             id="height"
             type="text"
             name="height"
@@ -58,10 +74,11 @@ const NewBoxForm = ({ createBox }) => {
 
         <div>
           <div>
-            <label htmlFor="backgroundColor">backgroundColor:</label>
-            <input
+            <label htmlFor="backgroundColor">Color: </label>
+            <TextField
               id="backgroundColor"
               type="text"
+              placeholder="Box color"
               onChange={handleChange}
               name="backgroundColor"
               value={formData.backgroundColor}
@@ -78,7 +95,7 @@ const NewBoxForm = ({ createBox }) => {
           Add Box
         </Button>
       </form>
-    </div>
+    </Box>
   );
 };
 

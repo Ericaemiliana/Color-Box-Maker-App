@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import { v4 as uuid } from "uuid";
 import Box from "./Box";
 import NewBoxForm from "./NewBoxForm";
+import Grid from "@material-ui/core/Grid";
 
 const BoxList = () => {
   /*const INITIAL_STATE = [
@@ -18,21 +19,27 @@ const BoxList = () => {
   };
 
   const boxComponents = boxes.map((box) => (
-    <Box
-      key={box.id}
-      id={box.id}
-      width={box.width}
-      heigh={box.height}
-      handleRemove={removeBox}
-      backgroundColor={box.backgroundColor}
-    />
+    <Grid item xs={6} sm={2}>
+      <Box p={2}>
+        <Box
+          key={box.id}
+          id={box.id}
+          width={box.width}
+          heigh={box.height}
+          handleRemove={removeBox}
+          backgroundColor={box.backgroundColor}
+        />
+      </Box>
+    </Grid>
   ));
 
   return (
     <div>
-      <h3>My Boxes</h3>
+      <h3>Create a Box</h3>
       <NewBoxForm createBox={add} />
-      {boxComponents}
+      <Grid container spacing={1}>
+        {boxComponents}
+      </Grid>
     </div>
   );
 };
