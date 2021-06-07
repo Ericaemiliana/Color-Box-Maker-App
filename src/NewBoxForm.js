@@ -1,5 +1,7 @@
 import React, { useState } from "react";
 import uuid from "uuid/v4";
+import { makeStyles } from "@material-ui/core/styles";
+import Button from "@material-ui/core/Button";
 
 const NewBoxForm = ({ createBox }) => {
   const INITIAL_STATE = {
@@ -67,7 +69,14 @@ const NewBoxForm = ({ createBox }) => {
           </div>
         </div>
 
-        <button>Add Box</button>
+        <Button
+          variant="contained"
+          color="secondary"
+          href="#contained-buttons"
+          onClick={handleSubmit}
+        >
+          Add Box
+        </Button>
       </form>
     </div>
   );
