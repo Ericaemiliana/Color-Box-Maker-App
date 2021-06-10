@@ -1,6 +1,6 @@
 import React from "react";
 
-const Box = ({
+const BoxItem = ({
   id,
   width = 4,
   height = 4,
@@ -23,4 +23,4 @@ const Box = ({
   );
 };
 
-export default Box;
+export default BoxItem;

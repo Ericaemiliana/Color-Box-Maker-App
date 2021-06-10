@@ -1,8 +1,9 @@
 import React, { useState } from "react";
 import { v4 as uuid } from "uuid";
-import Box from "./Box";
+import Box from "./BoxItem";
 import NewBoxForm from "./NewBoxForm";
 import Grid from "@material-ui/core/Grid";
+import MUIBox from "@material-ui/core/Box";
 
 const BoxList = () => {
   /*const INITIAL_STATE = [
@@ -20,16 +21,16 @@ const BoxList = () => {
 
   const boxComponents = boxes.map((box) => (
     <Grid item xs={6} sm={2}>
-      <Box p={2}>
+      <MUIBox p={2}>
         <Box
           key={box.id}
           id={box.id}
           width={box.width}
-          heigh={box.height}
+          height={box.height}
           handleRemove={removeBox}
           backgroundColor={box.backgroundColor}
         />
-      </Box>
+      </MUIBox>
     </Grid>
   ));
 
