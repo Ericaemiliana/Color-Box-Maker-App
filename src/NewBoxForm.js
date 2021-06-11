@@ -4,6 +4,9 @@ import { makeStyles } from "@material-ui/core/styles";
 import Button from "@material-ui/core/Button";
 import TextField from "@material-ui/core/TextField";
 import Box from "@material-ui/core/Box";
+import { ThemeProvider, createMuiTheme } from "@material-ui/core/styles";
+
+import { ColorPicker, createColor } from "material-ui-color";
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -17,16 +20,26 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
+const theme = createMuiTheme({
+  palette: {},
+});
+
 const NewBoxForm = ({ createBox }) => {
   const INITIAL_STATE = {
     width: "",
     height: "",
     backgroundColor: "",
+    //#A0E7E5
   };
 
   const classes = useStyles();
-
+  const [color, setColor] = useState(createColor("#000"));
   const [formData, setFormData] = useState(INITIAL_STATE);
+
+  const handleChangeColor = (value) => {
+    console.log("onChange=", value);
+    setColor(value);
+  };
 
   const handleChange = (e) => {
     console.log(e.target);
@@ -44,6 +57,7 @@ const NewBoxForm = ({ createBox }) => {
     e.preventDefault();
     createBox({ ...formData, id: uuid() });
     setFormData(INITIAL_STATE);
+    console.log(formData);
   };
 
   return (
@@ -72,7 +86,7 @@ const NewBoxForm = ({ createBox }) => {
           />
         </div>
 
-        <div>
+        {/**<div>
           <div>
             <label htmlFor="backgroundColor">Color: </label>
             <TextField
@@ -84,6 +98,18 @@ const NewBoxForm = ({ createBox }) => {
               value={formData.backgroundColor}
             />
           </div>
+        </div>**/}
+
+        <div>
+          <label htmlFor="backgroundColor">Color: </label>
+          <ColorPicker
+            //value={color}
+            onChange={handleChange}
+            id="backgroundColor"
+            //onChange={handleChange}
+            name="backgroundColor"
+            //value={formData.backgroundColor}
+          />
         </div>
 
         <Button
@@ -95,6 +121,9 @@ const NewBoxForm = ({ createBox }) => {
           Add Box
         </Button>
       </form>
+      <div>
+        <ColorPicker value={color} onChange={handleChangeColor} />
+      </div>
     </Box>
   );
 };

@@ -20,10 +20,9 @@ const BoxList = () => {
   };
 
   const boxComponents = boxes.map((box) => (
-    <Grid item xs={6} sm={2}>
+    <Grid key={box.id} item xs={6} sm={2}>
       <MUIBox p={2}>
         <Box
-          key={box.id}
           id={box.id}
           width={box.width}
           height={box.height}
