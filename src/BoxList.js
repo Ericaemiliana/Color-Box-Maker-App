@@ -11,8 +11,9 @@ const BoxList = () => {
   ];*/
   const [boxes, setBoxes] = useState([]);
 
-  const add = (newBox) => {
+  const add = (newBox, color) => {
     setBoxes((boxes) => [...boxes, { ...newBox, id: uuid() }]);
+    console.log("newbox", newBox);
   };
 
   const removeBox = (id) => {
